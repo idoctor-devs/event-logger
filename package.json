@@ -1,8 +1,20 @@
 {
   "name": "event-logger",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "NPM библиотека для отправки событий и сообщений в мессенджеры из веб-приложений",
+  "main": "dist/event-logger.cjs.js",
+  "module": "dist/event-logger.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/event-logger.es.js",
+      "require": "./dist/event-logger.cjs.js"
+    }
+  },
   "scripts": {
     "build": "vite build",
     "test": "vitest",
@@ -13,10 +25,29 @@
     "format": "prettier --write src/**/*.ts",
     "type-check": "tsc --noEmit"
   },
-  "keywords": [],
+  "keywords": [
+    "event-logger",
+    "telegram",
+    "logging",
+    "messenger",
+    "spa",
+    "browser",
+    "typescript"
+  ],
   "author": "punkmachine",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/punkmachine/event-logger.git"
+  },
+  "bugs": {
+    "url": "https://github.com/punkmachine/event-logger/issues"
+  },
+  "homepage": "https://github.com/punkmachine/event-logger#readme",
   "packageManager": "pnpm@10.4.1",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "devDependencies": {
     "@types/node": "^22.15.30",
     "@typescript-eslint/eslint-plugin": "^8.33.1",
