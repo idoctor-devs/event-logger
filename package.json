@@ -1,6 +1,7 @@
 {
   "name": "event-logger",
   "version": "1.0.0",
+  "type": "module",
   "description": "NPM библиотека для отправки событий и сообщений в мессенджеры из веб-приложений",
   "main": "dist/event-logger.cjs.js",
   "module": "dist/event-logger.es.js",
@@ -59,6 +60,7 @@
     "node": ">=20.0.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.28.0",
     "@types/node": "^22.15.30",
     "@typescript-eslint/eslint-plugin": "^8.33.1",
     "@typescript-eslint/parser": "^8.33.1",
@@ -66,6 +68,7 @@
     "@vitest/ui": "^3.2.2",
     "eslint": "^9.28.0",
     "eslint-config-prettier": "^10.1.5",
+    "eslint-import-resolver-typescript": "^4.4.3",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.4.1",
     "jsdom": "^26.1.0",

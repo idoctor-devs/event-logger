@@ -6,7 +6,7 @@ export interface LogData {
   level: LogLevel;
   timestamp: Date;
   environment: Environment;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface TelegramProviderConfig {

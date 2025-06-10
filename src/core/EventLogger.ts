@@ -1,7 +1,8 @@
-import { IEventLogger } from './interfaces';
-import { EventLoggerConfig, LogLevel } from './types';
 import { TelegramProvider } from '../providers/telegram/TelegramProvider';
 import { validateEventLoggerConfig } from '../utils/validation';
+
+import type { IEventLogger } from './interfaces';
+import type { EventLoggerConfig, LogLevel } from './types';
 
 export class EventLogger implements IEventLogger {
   private readonly providers: TelegramProvider[] = [];
@@ -44,7 +45,7 @@ export class EventLogger implements IEventLogger {
       return;
     }
 
-    const sendPromises = this.providers.map(async (provider) => {
+    const sendPromises = this.providers.map(async provider => {
       try {
         await provider.send(message, level);
       } catch (error) {

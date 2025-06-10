@@ -1,4 +1,4 @@
-import { LogLevel } from './types';
+import type { LogLevel } from './types';
 
 export interface IEventLogger {
   log(message: string): Promise<void>;

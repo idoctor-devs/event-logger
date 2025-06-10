@@ -1,0 +1,9 @@
+.env
+.env.development
+.env.production
+
+dist
+
+.husky
+
+node_modules

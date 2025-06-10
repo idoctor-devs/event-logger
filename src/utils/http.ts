@@ -7,7 +7,7 @@ export async function sendTelegramMessage(
   botToken: string,
   chatId: string,
   message: string,
-  options: TelegramSendOptions = {}
+  options: TelegramSendOptions = {},
 ): Promise<boolean> {
   const { timeout = 5000, retryAttempts = 3 } = options;
   const url = `https://api.telegram.org/bot${botToken}/sendMessage`;

@@ -1,4 +1,4 @@
-import { EventLoggerConfig, TelegramProviderConfig } from '../core/types';
+import type { EventLoggerConfig, TelegramProviderConfig } from '../core/types';
 
 export class ValidationError extends Error {
   constructor(message: string) {
@@ -34,10 +34,7 @@ export function validateEventLoggerConfig(config: EventLoggerConfig): void {
   });
 }
 
-export function validateTelegramProviderConfig(
-  config: TelegramProviderConfig,
-  index?: number
-): void {
+export function validateTelegramProviderConfig(config: TelegramProviderConfig, index?: number): void {
   const providerPrefix = index !== undefined ? `Provider[${index}]: ` : '';
 
   if (!config) {

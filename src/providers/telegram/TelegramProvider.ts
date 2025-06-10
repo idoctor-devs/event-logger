@@ -1,7 +1,7 @@
-import { BaseProvider } from '../base/BaseProvider';
-import { ITelegramProvider } from '../../core/interfaces';
-import { LogLevel, TelegramProviderConfig } from '../../core/types';
+import type { ITelegramProvider } from '../../core/interfaces';
+import type { LogLevel, TelegramProviderConfig } from '../../core/types';
 import { sendTelegramMessage } from '../../utils/http';
+import { BaseProvider } from '../base/BaseProvider';
 
 export class TelegramProvider extends BaseProvider implements ITelegramProvider {
   private readonly config: TelegramProviderConfig;
@@ -15,15 +15,10 @@ export class TelegramProvider extends BaseProvider implements ITelegramProvider 
     try {
       const formattedMessage = this.formatMessage(message, level);
 
-      const success = await sendTelegramMessage(
-        this.config.botToken,
-        this.config.chatId,
-        formattedMessage,
-        {
-          timeout: this.config.timeout || 5000,
-          retryAttempts: this.config.retryAttempts || 3,
-        }
-      );
+      const success = await sendTelegramMessage(this.config.botToken, this.config.chatId, formattedMessage, {
+        timeout: this.config.timeout || 5000,
+        retryAttempts: this.config.retryAttempts || 3,
+      });
 
       return success;
     } catch (error) {
