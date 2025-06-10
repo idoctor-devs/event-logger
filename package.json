@@ -1,6 +1,6 @@
 {
-  "name": "event-logger",
-  "version": "1.0.0",
+  "name": "@idoctor-devs/event-logger",
+  "version": "0.1.0",
   "type": "module",
   "description": "NPM библиотека для отправки событий и сообщений в мессенджеры из веб-приложений",
   "main": "dist/event-logger.cjs.js",
@@ -9,6 +9,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -49,12 +52,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/punkmachine/event-logger.git"
+    "url": "git+https://github.com/idoctor-devs/event-logger.git"
   },
   "bugs": {
-    "url": "https://github.com/punkmachine/event-logger/issues"
+    "url": "https://github.com/idoctor-devs/event-logger/issues"
   },
-  "homepage": "https://github.com/punkmachine/event-logger#readme",
+  "homepage": "https://github.com/idoctor-devs/event-logger#readme",
   "packageManager": "pnpm@10.4.1",
   "engines": {
     "node": ">=20.0.0"
