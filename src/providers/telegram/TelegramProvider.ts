@@ -57,9 +57,9 @@ export class TelegramProvider extends BaseProvider implements ITelegramProvider 
     let formattedMessage = `${levelEmoji} [${level.toUpperCase()}] ${timestamp}`;
 
     if (metadata && Object.keys(metadata).length > 0) {
-      formattedMessage += '\n\n*METADATA*';
+      formattedMessage += '\n\n<b>METADATA</b>\n';
       for (const [key, value] of Object.entries(metadata)) {
-        formattedMessage += `\n*${key}*: ${value}`;
+        formattedMessage += `\n<b>${key}</b>: ${value}`;
       }
       formattedMessage += '\n';
     }

@@ -15,7 +15,7 @@ export async function sendTelegramMessage(
   const payload = {
     chat_id: chatId,
     text: message,
-    // parse_mode: 'MarkdownV2' as const,
+    parse_mode: 'HTML' as const,
   };
 
   for (let attempt = 1; attempt <= retryAttempts; attempt++) {
