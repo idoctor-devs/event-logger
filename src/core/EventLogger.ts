@@ -44,8 +44,8 @@ export class EventLogger implements IEventLogger {
     level: LogLevel,
     metadata?: Record<string, string | number>,
   ): Promise<void> {
-    if (!message || typeof message !== 'string') {
-      console.warn('EventLogger: Message must be a non-empty string');
+    if ((!message || typeof message !== 'string') && !metadata) {
+      console.warn('EventLogger: Message must be a non-empty string or metadata must be provided');
       return;
     }
 
