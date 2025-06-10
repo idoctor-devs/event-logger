@@ -1,14 +1,6 @@
 export type Environment = 'browser';
 export type LogLevel = 'log' | 'info' | 'warn' | 'error';
 
-export interface LogData {
-  message: string;
-  level: LogLevel;
-  timestamp: Date;
-  environment: Environment;
-  metadata?: Record<string, unknown>;
-}
-
 export interface TelegramProviderConfig {
   type: 'telegram';
   botToken: string;

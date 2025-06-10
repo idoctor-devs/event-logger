@@ -23,23 +23,23 @@ export class EventLogger implements IEventLogger {
     }
   }
 
-  async log(message: string): Promise<void> {
-    await this.sendToAllProviders(message, 'log');
+  async log(message: string, metadata?: Record<string, string | number>): Promise<void> {
+    await this.sendToAllProviders(message, 'log', metadata);
   }
 
-  async info(message: string): Promise<void> {
-    await this.sendToAllProviders(message, 'info');
+  async info(message: string, metadata?: Record<string, string | number>): Promise<void> {
+    await this.sendToAllProviders(message, 'info', metadata);
   }
 
-  async warn(message: string): Promise<void> {
-    await this.sendToAllProviders(message, 'warn');
+  async warn(message: string, metadata?: Record<string, string | number>): Promise<void> {
+    await this.sendToAllProviders(message, 'warn', metadata);
   }
 
-  async error(message: string): Promise<void> {
-    await this.sendToAllProviders(message, 'error');
+  async error(message: string, metadata?: Record<string, string | number>): Promise<void> {
+    await this.sendToAllProviders(message, 'error', metadata);
   }
 
-  private async sendToAllProviders(message: string, level: LogLevel): Promise<void> {
+  private async sendToAllProviders(message: string, level: LogLevel, metadata?: Record<string, string | number>): Promise<void> {
     if (!message || typeof message !== 'string') {
       console.warn('EventLogger: Message must be a non-empty string');
       return;
@@ -47,7 +47,7 @@ export class EventLogger implements IEventLogger {
 
     const sendPromises = this.providers.map(async provider => {
       try {
-        await provider.send(message, level);
+        await provider.send(message, level, metadata);
       } catch (error) {
         console.error(`EventLogger: Failed to send message via provider:`, error);
       }

@@ -11,9 +11,9 @@ export class TelegramProvider extends BaseProvider implements ITelegramProvider 
     this.config = config;
   }
 
-  async send(message: string, level: LogLevel): Promise<boolean> {
+  async send(message: string, level: LogLevel, metadata?: Record<string, string | number>): Promise<boolean> {
     try {
-      const formattedMessage = this.formatMessage(message, level);
+      const formattedMessage = this.formatMessage(message, level, metadata);
 
       const success = await sendTelegramMessage(this.config.botToken, this.config.chatId, formattedMessage, {
         timeout: this.config.timeout || 5000,
@@ -36,11 +36,23 @@ export class TelegramProvider extends BaseProvider implements ITelegramProvider 
     return this.config.chatId;
   }
 
-  private formatMessage(message: string, level: LogLevel): string {
+  private formatMessage(message: string, level: LogLevel, metadata?: Record<string, string | number>): string {
     const timestamp = new Date().toISOString();
     const levelEmoji = this.getLevelEmoji(level);
 
-    return `${levelEmoji} [${level.toUpperCase()}] ${timestamp}\n${message}`;
+    let formattedMessage = `${levelEmoji} [${level.toUpperCase()}] ${timestamp}`;
+
+    if (metadata && Object.keys(metadata).length > 0) {
+      formattedMessage += '\n\n*-- metadata --*';
+      for (const [key, value] of Object.entries(metadata)) {
+        formattedMessage += `\n*${key}*: ${value}`;
+      }
+      formattedMessage += '\n';
+    }
+
+    formattedMessage += `\n${message}`;
+
+    return formattedMessage;
   }
 
   private getLevelEmoji(level: LogLevel): string {

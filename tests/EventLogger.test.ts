@@ -40,7 +40,6 @@ describe('EventLogger', () => {
   it('should handle empty message gracefully', async () => {
     const logger = new EventLogger(validConfig);
 
-    // These should not throw errors
     await expect(logger.log('')).resolves.toBeUndefined();
     await expect(logger.info('')).resolves.toBeUndefined();
     await expect(logger.warn('')).resolves.toBeUndefined();
