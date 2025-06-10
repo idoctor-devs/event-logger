@@ -39,7 +39,11 @@ export class EventLogger implements IEventLogger {
     await this.sendToAllProviders(message, 'error', metadata);
   }
 
-  private async sendToAllProviders(message: string, level: LogLevel, metadata?: Record<string, string | number>): Promise<void> {
+  private async sendToAllProviders(
+    message: string,
+    level: LogLevel,
+    metadata?: Record<string, string | number>,
+  ): Promise<void> {
     if (!message || typeof message !== 'string') {
       console.warn('EventLogger: Message must be a non-empty string');
       return;
