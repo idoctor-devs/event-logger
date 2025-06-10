@@ -3,6 +3,11 @@ interface TelegramSendOptions {
   retryAttempts?: number;
 }
 
+function escapeMarkdownV2(text: string): string {
+  const specialChars = /[_*[\]()~`>#+=|{}.!-]/g;
+  return text.replace(specialChars, '\\$&');
+}
+
 export async function sendTelegramMessage(
   botToken: string,
   chatId: string,
@@ -14,8 +19,8 @@ export async function sendTelegramMessage(
 
   const payload = {
     chat_id: chatId,
-    text: message,
-    parse_mode: 'HTML' as const,
+    text: escapeMarkdownV2(message),
+    parse_mode: 'MarkdownV2' as const,
   };
 
   for (let attempt = 1; attempt <= retryAttempts; attempt++) {
