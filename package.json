@@ -1,6 +1,6 @@
 {
   "name": "@idoctor-devs/event-logger",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "type": "module",
   "description": "NPM библиотека для отправки событий и сообщений в мессенджеры из веб-приложений",
   "main": "dist/event-logger.cjs.js",
