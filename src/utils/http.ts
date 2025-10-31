@@ -4,7 +4,7 @@ interface TelegramSendOptions {
 }
 
 function escapeMarkdownV2(text: string): string {
-  const specialChars = /[_*[\]()~`>#+\-=|{}.!]/g;
+  const specialChars = /[().!-]/g;
   return text.replace(specialChars, '\\$&');
 }
 
